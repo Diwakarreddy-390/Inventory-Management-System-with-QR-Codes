@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div>
+            <h1>Inventory Management</h1>
+            <div class="buttons">
+                <button class="insert" onclick="location.href='/insert'">Insert</button>
+                <button class="sell" onclick="location.href='/sell'">Sell</button>
+                <button class="generate" onclick="location.href='/generate_report'">transactions</button>
+                <button class="list" onclick="location.href='/generate_qr'">Generate QR Code</button>
+                <button class="submit" onclick="location.href='/product_list'">Product List</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

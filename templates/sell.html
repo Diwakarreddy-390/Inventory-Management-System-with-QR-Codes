@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Product</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sell Product</h1>
+        <form action="/sell" method="POST" enctype="multipart/form-data">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" placeholder="Enter product name or scan QR code"><br><br>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" placeholder="Enter quantity"><br><br>
+            <label for="qrCode">Scan QR Code:</label>
+            <input type="file" id="qrCode" name="qrCode" accept="image/*"><br><br>
+            <button type="submit">Sell Product</button>
+        </form>
+        <button onclick="location.href='/'">Back</button>
+
+        {% if error %}
+            <div>
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        {% if scanned_items %}
+            <div>
+                <h2>Previously Scanned Items</h2>
+                <ul>
+                    {% for item in scanned_items %}
+                        <li>{{ item.name }} - ₹{{ item.price }}</li>
+                    {% endfor %}
+                </ul>
+                <h3>Total Amount: ₹{{ total_amount }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

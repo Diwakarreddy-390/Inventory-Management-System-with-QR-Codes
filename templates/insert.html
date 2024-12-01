@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Product</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .form-container {
+            flex: 2;
+        }
+        .qr-code-container {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Insert New Product</h1>
+            <form action="/insert" method="POST" enctype="multipart/form-data">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" required><br><br>
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" id="price" name="price" required><br><br>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" required><br><br>
+                <label for="qrCode">Scan QR Code:</label>
+                <input type="file" id="qrCode" name="qrCode" accept="image/*"><br><br>
+                <button type="submit">Add Product</button>
+            </form>
+            <button onclick="location.href='/'">Back</button>
+        </div>
+
+        {% if qr_code_filename %}
+            <div class="qr-code-container">
+                <h2>QR Code for {{ product_name }}</h2>
+                <img src="{{ url_for('static', filename=qr_code_filename) }}" alt="QR Code">
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
